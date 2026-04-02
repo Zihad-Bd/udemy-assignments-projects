@@ -1,0 +1,51 @@
+﻿@using Assignment14.Models
+@model CityWeather
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    string convertToTime(DateTime dt)
+    {
+        string time = dt.ToString("hh:mm tt");
+        return time;
+    }
+
+    string GetTempClass(int temp)
+    {
+        if (temp < 44) return "blue-back";
+        else if (temp >= 44 && temp <= 74) return "green-back";
+        return "orange-back";
+    }
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <link href="~/stylesheet.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="page-content">
+        <h2>Weather</h2>
+        <div class="outer-box">
+            <div class="inner-box margin-top-200" style="justify-content:center">
+                <div class="box @GetTempClass(Model.TemperatureFahrenheit)">
+                    <div class="left-section">
+                        <h3>@Model.CityName</h3>
+                        <p class="margin-bottom-5">@convertToTime(Model.DateAndTime)</p>
+                        <a class="cursor-pointer text-blue">Details</a>
+                    </div>
+                    <div class="vertical-line"></div>
+                    <div class="right-section">
+                        <p><span style="font-weight: bold">@Model.TemperatureFahrenheit</span> <sup class="text-grey" style="font-size:18px">°F</sup></p>
+                    </div>
+                </div>
+                <div style ="text-align:center">
+                    <a href="/" >Back to Weather Home Page</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
