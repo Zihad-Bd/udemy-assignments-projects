@@ -1,0 +1,47 @@
+﻿@using Assignment14.Models
+@model List<CityWeather>
+
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    string convertToTime(DateTime dt)
+    {
+        string time = dt.ToString("hh:mm tt");
+        return time;
+    }
+
+    string GetTempClass(int temp)
+    {
+        if (temp < 44) return "blue-back";
+        else if (temp >= 44 && temp <= 74) return "green-back";
+        return "orange-back";
+    }
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <link href="~/stylesheet.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="flex margin-top-200">
+        @foreach(var city in Model)
+        {
+            <div class="box @GetTempClass(city.TemperatureFahrenheit)">
+                <div class="left-section">
+                    <h3>@city.CityName</h3>
+                    <p class="margin-bottom-5">@convertToTime(city.DateAndTime)</p>
+                    <a class="cursor-pointer text-blue" href="/weather/@city.CityUniqueCode">Details</a>
+                </div>
+                <div class="vertical-line"></div>
+                <div class="right-section">
+                    <p><span style="font-weight: bold">@city.TemperatureFahrenheit</span> <sup class="text-grey">°F</sup></p>
+                </div>
+            </div>
+        }
+    </div>
+</body>
+</html>
+
