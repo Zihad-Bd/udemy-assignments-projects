@@ -1,0 +1,31 @@
+﻿@using Assignment18.Models
+@model CityWeather
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <link href="~/stylesheet.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="outer-box">
+        <div class="inner-box margin-top-200" style="justify-content:center">
+            @{
+
+                await Html.RenderPartialAsync("_Partial", Model);
+            }
+                        
+            <div style="text-align:center">
+                <a href="/">Back to Weather Home Page</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
