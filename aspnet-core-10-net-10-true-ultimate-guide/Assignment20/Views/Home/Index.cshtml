@@ -1,4 +1,4 @@
-﻿@using Assignment18.Models
+﻿@using Assignment20.Models
 @model List<CityWeather>
 
 @*
@@ -16,10 +16,10 @@
 </head>
 <body>
     <div class="flex margin-top-200">
-        @foreach(var city in Model)
+        @foreach (var city in Model)
         {
-                @await Html.PartialAsync("_Partial", city)
-            }
+            @await Component.InvokeAsync("Weather", new { weather = city })
+        }
     </div>
 </body>
 </html>
